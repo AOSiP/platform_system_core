@@ -298,7 +298,6 @@ cc_binary_host {
         targets: [
             "dist_files",
             "sdk",
-            "win_sdk",
         ],
     },
 
