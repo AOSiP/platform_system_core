@@ -51,7 +51,6 @@ class ProfileAction {
     virtual bool ExecuteForTask(int) const { return false; };
 
     virtual void EnableResourceCaching() {}
-    virtual void DropResourceCaching() {}
 };
 
 // Profile actions
@@ -115,7 +114,6 @@ class SetCgroupAction : public ProfileAction {
     virtual bool ExecuteForProcess(uid_t uid, pid_t pid) const;
     virtual bool ExecuteForTask(int tid) const;
     virtual void EnableResourceCaching();
-    virtual void DropResourceCaching();
 
     const CgroupController* controller() const { return &controller_; }
     std::string path() const { return path_; }
@@ -147,7 +145,6 @@ class TaskProfile {
     bool ExecuteForProcess(uid_t uid, pid_t pid) const;
     bool ExecuteForTask(int tid) const;
     void EnableResourceCaching();
-    void DropResourceCaching();
 
   private:
     bool res_cached_;
@@ -161,7 +158,6 @@ class TaskProfiles {
 
     TaskProfile* GetProfile(const std::string& name) const;
     const ProfileAttribute* GetAttribute(const std::string& name) const;
-    void DropResourceCaching() const;
 
   private:
     std::map<std::string, std::unique_ptr<TaskProfile>> profiles_;
