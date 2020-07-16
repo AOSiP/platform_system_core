@@ -111,10 +111,6 @@ static bool isMemoryCgroupSupported() {
     return memcg_supported;
 }
 
-void DropTaskProfilesResourceCaching() {
-    TaskProfiles::GetInstance().DropResourceCaching();
-}
-
 bool SetProcessProfiles(uid_t uid, pid_t pid, const std::vector<std::string>& profiles,
                         bool use_fd_cache) {
     const TaskProfiles& tp = TaskProfiles::GetInstance();
